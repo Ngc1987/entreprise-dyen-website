@@ -2,11 +2,15 @@
   "name": "entreprise-dyen",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ngc1987.github.io/entreprise-dyen-website",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build",
+    "predeploy": "npm run export",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.10",
@@ -18,5 +22,8 @@
     "react-dom": "18.2.0",
     "react-transition-group": "^4.4.5",
     "tailwindcss": "^3.2.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }

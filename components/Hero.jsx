@@ -14,7 +14,7 @@ export default function Hero({
       <div className="absolute inset-0">
         <Image
           src={imagePath}
-          alt="Hero background"
+          alt={`${title} - Entreprise D'Yen, spécialiste en construction bois`}
           fill
           className="object-cover brightness-50"
           priority
