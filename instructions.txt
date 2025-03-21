@@ -1,0 +1,93 @@
+Prompt for Creating a Modern Showcase Website for Entreprise D'Yen
+
+Context & Objectives:
+Develop a showcase website for Entreprise D'Yen, which offers services in constructing wooden chalets, home extensions, carpentry, and interior fittings. The website should be immersive, warm, and provide an intuitive user experience, featuring smooth navigation and animated transitions. SEO is paramount, so opt for static site generation (SSG) via Next.js to ensure fast, well-indexed pages.
+
+Technology Stack:
+
+Next.js: Version 13.4.12 (to leverage static generation and server-side rendering for SEO optimization)
+React: Version 18.2.0
+Node.js: >=14.x
+Package Manager: npm
+Dependencies to Install:
+
+bash
+Copier
+npm install autoprefixer@^10.0.0 \
+            lucide-react@^0.244.0 \
+            next@13.4.12 \
+            postcss@^8.4.0 \
+            react@18.2.0 \
+            react-dom@18.2.0 \
+            tailwindcss@^3.2.0
+Technical Configuration:
+
+Project Structure:
+
+Organize the project root into the following folders:
+/components/: Reusable UI components (buttons, sliders, etc.)
+/pages/: Website pages with Next.js routing
+/public/: Static assets (images, icons)
+/styles/: Global styles and Tailwind configuration
+/utils/: Utility functions and helpers
+A full clean architecture is not necessary, but maintain good practices in modularity and organization.
+Configuration Files:
+
+next.config.js: Configure image domains to include necessary ones (e.g., freepik.com and other image sources)
+tailwind.config.js: Set up a custom theme and extend the color palette
+postcss.config.js: Configure PostCSS with Tailwind
+Create a global styles file in /styles/globals.css
+Design & Style:
+
+Visual Identity:
+Primary Colors:
+Primary: #A59765
+Secondary: #4F5960
+Option to add complementary colors if needed for contrast.
+Typography: Use a classic and readable font (modifiable later based on the final identity).
+User Experience:
+Create an immersive and warm design with light animations and smooth transitions (e.g., hover effects, fade-ins/outs, gentle scaling).
+Ensure smooth navigation with a sticky header that changes opacity or background upon scrolling.
+Responsive Design:
+Mobile-first approach with standard breakpoints:
+sm: 640px, md: 768px, lg: 1024px, xl: 1280px
+Adapt layouts for large PC screens and tablets, optimizing element positioning.
+Content and Pages:
+
+Immersive Homepage:
+
+A hero section with a full-width image overlaid with attention-grabbing text and an animated Call To Action (CTA).
+Smooth transitions between sections to enhance immersion.
+"Chalets" Page:
+
+Present two sub-themes:
+Wooden Chalets:
+Image of a wooden chalet
+Text describing the benefits (eco-friendly, architectural possibilities, energy efficiency, quick execution, administrative support)
+Extensions:
+Image of a home extension
+Text outlining the benefits (lightweight, seamless integration, aesthetic appeal, simplified technical constraints)
+On larger screens, consider a two-column layout side-by-side; on mobile, allow swipe navigation between themes.
+"Carpentry / Interior Fittings" Page:
+
+Present the service with an image and detailed text explaining interventions in exterior carpentry (wood, aluminum, PVC) and interior fittings.
+Emphasize an immersive design even within a basic structure.
+Gallery Page:
+
+Display images as thumbnails.
+On clicking an image, open a slider or modal in full view for an enriched visual experience.
+Future iterations may explore a more creative layout.
+Contacts Page:
+
+Display an interactive map (Google Maps or similar) with complete contact details.
+Include an illustrative image and, if needed, a contact form.
+Interactions & Animations:
+
+Implement smooth page transitions (e.g., fade-in/out or sliding effects) to maintain an immersive experience.
+Use hover effects on buttons and images (gentle scaling, subtle shadows) to enhance interactivity.
+For navigation, create a mobile menu with a hamburger icon that reveals links with animated transitions.
+SEO & Performance Optimization:
+
+Use static site generation (SSG) for all pages to optimize SEO and load times.
+Optimize images using Next.js’ Image component.
+Adhere to SEO best practices (meta tags, titles, descriptions, etc.)
