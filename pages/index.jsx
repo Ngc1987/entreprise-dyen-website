@@ -6,8 +6,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { IMAGES } from '../utils/constants';
 import { imageLoader } from '../utils/imageLoader';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function Home() {
+  const router = useRouter();
+
+  // Gestion des redirections de GitHub Pages
+  useEffect(() => {
+    // Vérifier si nous avons un paramètre 'path' dans l'URL
+    const { path } = router.query;
+    if (path && typeof window !== 'undefined') {
+      // Rediriger vers la bonne page
+      router.push(path);
+    }
+  }, [router]);
+
   return (
     <Layout>
       <Head>

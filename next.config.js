@@ -15,6 +15,12 @@ const nextConfig = {
   // Configuration pour GitHub Pages
   basePath: process.env.NODE_ENV === 'production' ? '/entreprise-dyen-website' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/entreprise-dyen-website/' : '',
+  // Ajout de la configuration pour les ressources statiques
+  trailingSlash: true,
+  // Désactiver le chargement dynamique pour un déploiement statique complet
+  experimental: {
+    forceSwcTransforms: true,
+  }
 }
 
 module.exports = nextConfig 
