@@ -7,8 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#A69766',  // Bleu foncé
-        secondary: '#4F5960', // Bleu très foncé
+        primary: '#A69766',  // Couleur principale (doré/ocre)
+        'primary-dark': '#8A7D55', // Version plus foncée de la couleur principale
+        secondary: '#4F5960', // Couleur secondaire (gris bleuté)
+        'secondary-dark': '#3A4348', // Version plus foncée de la couleur secondaire
       },
       container: {
         center: true,

@@ -34,46 +34,47 @@ export default function Home() {
         }
       />
 
-      <section className="py-16">
+      <section className="py-16" aria-labelledby="services-title">
         <div className="container">
           <SectionTitle
             title="Nos Services"
             subtitle="Découvrez notre expertise dans la construction et l'aménagement"
+            id="services-title"
           />
 
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="text-center max-w-3xl mx-auto mb-12" tabIndex="0">
             <p className="mb-4">
               Implantée au cœur du Haut-Verdon Val d'Allos, dans les Alpes de Haute Provence, 
               DYEN CONSTRUCTION BOIS met son savoir-faire à votre service pour tous vos projets :
             </p>
-            <ul className="text-center max-w-md mx-auto space-y-2 mb-4">
+            <ul className="text-center max-w-md mx-auto space-y-2 mb-4" aria-label="Liste de nos services">
               <li className="flex items-center justify-center">
-                <span className="text-primary mr-2">•</span>
+                <span className="text-primary mr-2" aria-hidden="true">•</span>
                 <span>Construction / Rénovation de chalets bois</span>
               </li>
               <li className="flex items-center justify-center">
-                <span className="text-primary mr-2">•</span>
+                <span className="text-primary mr-2" aria-hidden="true">•</span>
                 <span>Extension bois</span>
               </li>
               <li className="flex items-center justify-center">
-                <span className="text-primary mr-2">•</span>
+                <span className="text-primary mr-2" aria-hidden="true">•</span>
                 <span>Charpente / Couverture</span>
               </li>
               <li className="flex items-center justify-center">
-                <span className="text-primary mr-2">•</span>
+                <span className="text-primary mr-2" aria-hidden="true">•</span>
                 <span>Menuiserie / Agencement</span>
               </li>
             </ul>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8" role="list" aria-label="Nos services principaux">
             {services.map((service) => (
-              <div key={service.title} className="group">
-                <Link href={service.link}>
+              <div key={service.title} className="group" role="listitem">
+                <Link href={service.link} aria-label={`En savoir plus sur ${service.title}: ${service.description}`}>
                   <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
                     <Image
                       src={service.url}
-                      alt={service.title}
+                      alt={`Illustration de notre service: ${service.title}`}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
