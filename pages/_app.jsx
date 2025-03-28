@@ -3,15 +3,41 @@ import { LoadingProvider } from '../contexts/LoadingContext';
 import { useLoading } from '../contexts/LoadingContext';
 import Loader from '../components/Loader';
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 
 function AppContent({ Component, pageProps }) {
   const { isLoading } = useLoading();
+  const [mounted, setMounted] = useState(false);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  // Effet pour gérer le montage du composant
+  useEffect(() => {
+    setMounted(true);
+    // Empêcher le défilement pendant le chargement
+    if (isLoading && typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+    } else if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = 'auto';
+      }
+    };
+  }, [isLoading]);
 
-  return <Component {...pageProps} />;
+  // Transition en fondu pour le contenu principal
+  return (
+    <>
+      {isLoading && <Loader />}
+      <div 
+        className={`transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        aria-hidden={isLoading}
+      >
+        {mounted && <Component {...pageProps} />}
+      </div>
+    </>
+  );
 }
 
 function MyApp({ Component, pageProps }) {

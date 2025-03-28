@@ -1,6 +1,7 @@
-import Image from 'next/image';
+import NextImage from 'next/image';
 import Link from 'next/link';
 import { imageLoader, getImagePath } from '../utils/imageLoader';
+import { useEffect, useState } from 'react';
 
 export default function Hero({ 
   title, 
@@ -10,19 +11,32 @@ export default function Hero({
   imagePath,
   extraContent
 }) {
+  // État local pour gérer le chargement de l'image
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Effet pour précharger l'image de fond
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const img = new window.Image();
+      img.src = getImagePath(imagePath);
+      img.onload = () => setImageLoaded(true);
+    }
+  }, [imagePath]);
+
   return (
     <div className="relative h-screen" role="region" aria-label="En-tête de la page">
       <div className="absolute inset-0">
-        <Image
+        <NextImage
           loader={imageLoader}
           src={imagePath}
           alt={`Image d'arrière-plan: ${title} - Entreprise D'Yen, spécialiste en construction bois`}
           fill
-          className="object-cover brightness-50"
+          className={`object-cover brightness-50 transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           priority
           sizes="100vw"
           role="img"
           aria-hidden="false"
+          onLoad={() => setImageLoaded(true)}
         />
       </div>
       

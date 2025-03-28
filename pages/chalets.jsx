@@ -5,8 +5,21 @@ import SectionTitle from '../components/SectionTitle';
 import Image from 'next/image';
 import { IMAGES } from '../utils/constants';
 import { imageLoader } from '../utils/imageLoader';
+import { useEffect } from 'react';
+import { useLoading } from '../contexts/LoadingContext';
 
 export default function Chalets() {
+  const { imagesLoaded } = useLoading();
+  
+  // Assurer un rendu cohérent de l'image hero
+  useEffect(() => {
+    // Précharger l'image du hero pour la page chalets
+    if (typeof window !== 'undefined') {
+      const img = new window.Image();
+      img.src = imageLoader({ src: IMAGES.hero.chalets });
+    }
+  }, []);
+
   return (
     <Layout>
       <Head>
@@ -46,6 +59,7 @@ export default function Chalets() {
                 alt="Chalet en bois"
                 fill
                 className="object-cover"
+                priority={true}
               />
             </div>
             <div className="space-y-4">
@@ -92,6 +106,7 @@ export default function Chalets() {
                 alt="Extension en bois"
                 fill
                 className="object-cover"
+                priority={true}
               />
             </div>
           </div>
