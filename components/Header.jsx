@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { CSSTransition } from 'react-transition-group';
 import { IMAGES } from '../utils/constants';
+import { getImagePath } from '../utils/imageLoader';
 
 // Fonction de préchargement
 const preloadImage = (src) => {
@@ -29,7 +30,7 @@ const NavLink = ({ href, children, isMobile, ref }) => {
       className={`block py-2 hover:text-primary transition-colors ${isMobile ? 'px-2' : ''}`}
       onMouseEnter={() => {
         if (routeImages[href]) {
-          preloadImage(routeImages[href]);
+          preloadImage(getImagePath(routeImages[href]));
         }
       }}
       aria-current={typeof window !== 'undefined' && window.location.pathname === href ? 'page' : undefined}
@@ -44,6 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const menuButtonRef = useRef(null);
   const firstMenuItemRef = useRef(null);
+  const basePath = process.env.NODE_ENV === 'production' ? '/entreprise-dyen-website' : '';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,7 +97,7 @@ export default function Header() {
             aria-label="Entreprise D'Yen - Retour à l'accueil"
           >
             <img
-              src="/images/logo.png"
+              src={`${basePath}/images/logo.png`}
               alt="Entreprise D'Yen Logo"
               className="h-12 w-auto"
             />

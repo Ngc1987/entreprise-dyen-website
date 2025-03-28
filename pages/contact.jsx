@@ -5,6 +5,7 @@ import SectionTitle from '../components/SectionTitle';
 import ContactForm from '../components/ContactForm';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { IMAGES } from '../utils/constants';
+import { imageLoader } from '../utils/imageLoader';
 
 export default function Contact() {
   return (
@@ -87,6 +88,7 @@ export default function Contact() {
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
+                  title="Carte Google Maps pour Entreprise D'Yen"
                 ></iframe>
               </div>
             </div>

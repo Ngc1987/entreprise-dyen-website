@@ -7,11 +7,18 @@ export function LoadingProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Ajouter un timeout pour s'assurer que le site s'affiche après un certain temps
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000); // 5 secondes maximum
+
+    const basePath = process.env.NODE_ENV === 'production' ? '/entreprise-dyen-website' : '';
+    
     const heroImages = [
-      IMAGES.hero.home,
-      IMAGES.hero.chalets,
-      IMAGES.hero.menuiserie,
-      IMAGES.hero.contact
+      `${basePath}${IMAGES.hero.home}`,
+      `${basePath}${IMAGES.hero.chalets}`,
+      `${basePath}${IMAGES.hero.menuiserie}`,
+      `${basePath}${IMAGES.hero.contact}`
     ];
 
     Promise.all(
@@ -24,11 +31,17 @@ export function LoadingProvider({ children }) {
         });
       })
     )
-      .then(() => setIsLoading(false))
+      .then(() => {
+        clearTimeout(timeout);
+        setIsLoading(false);
+      })
       .catch(error => {
         console.error('Error preloading images:', error);
         setIsLoading(false); // On affiche quand même le site en cas d'erreur
       });
+
+    // Nettoyer le timeout si le composant est démonté
+    return () => clearTimeout(timeout);
   }, []);
 
   return (

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { imageLoader, getImagePath } from '../utils/imageLoader';
 
 export default function Hero({ 
   title, 
@@ -13,6 +14,7 @@ export default function Hero({
     <div className="relative h-screen" role="region" aria-label="En-tête de la page">
       <div className="absolute inset-0">
         <Image
+          loader={imageLoader}
           src={imagePath}
           alt={`Image d'arrière-plan: ${title} - Entreprise D'Yen, spécialiste en construction bois`}
           fill

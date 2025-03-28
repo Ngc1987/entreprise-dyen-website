@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import SectionTitle from '../components/SectionTitle';
 import Image from 'next/image';
 import { IMAGES } from '../utils/constants';
+import { imageLoader } from '../utils/imageLoader';
 
 export default function Chalets() {
   return (
@@ -40,6 +41,7 @@ export default function Chalets() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px] rounded-lg overflow-hidden">
               <Image
+                loader={imageLoader}
                 src={IMAGES.services.chalets.main}
                 alt="Chalet en bois"
                 fill
@@ -85,6 +87,7 @@ export default function Chalets() {
             </div>
             <div className="order-1 md:order-2 relative h-[400px] rounded-lg overflow-hidden">
               <Image
+                loader={imageLoader}
                 src={IMAGES.services.extensions.main}
                 alt="Extension en bois"
                 fill

@@ -5,6 +5,7 @@ import SectionTitle from '../components/SectionTitle';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IMAGES } from '../utils/constants';
+import { imageLoader } from '../utils/imageLoader';
 
 export default function Home() {
   return (
@@ -73,6 +74,7 @@ export default function Home() {
                 <Link href={service.link} aria-label={`En savoir plus sur ${service.title}: ${service.description}`}>
                   <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
                     <Image
+                      loader={imageLoader}
                       src={service.url}
                       alt={`Illustration de notre service: ${service.title}`}
                       fill

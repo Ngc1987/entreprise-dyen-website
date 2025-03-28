@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import SectionTitle from '../components/SectionTitle';
 import Image from 'next/image';
 import { IMAGES } from '../utils/constants';
+import { imageLoader } from '../utils/imageLoader';
 
 export default function Menuiserie() {
   return (
@@ -45,6 +46,7 @@ export default function Menuiserie() {
               <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="relative h-64">
                   <Image
+                    loader={imageLoader}
                     src={service.url}
                     alt={service.title}
                     fill

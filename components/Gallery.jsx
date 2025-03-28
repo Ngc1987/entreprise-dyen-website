@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { imageLoader } from '../utils/imageLoader';
 
 export default function Gallery({ images }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -101,6 +102,7 @@ export default function Gallery({ images }) {
             className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
             <Image
+              loader={imageLoader}
               src={image.url}
               alt={image.title}
               fill
@@ -176,6 +178,7 @@ export default function Gallery({ images }) {
                 }`}
               >
                 <Image
+                  loader={imageLoader}
                   src={images[selectedImageIndex].url}
                   alt={images[selectedImageIndex].title}
                   fill
